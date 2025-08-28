@@ -1,15 +1,8 @@
+// src/App.jsx
 import { useEffect, useState } from "react";
 import { Mail, Phone, Linkedin, Github, Download } from "lucide-react";
 
-// HOW TO USE LOCALLY (ASCII-only comments to avoid parser edge cases)
-// 1) Create a React + Vite app with TailwindCSS.
-// 2) Put this component in src/App.jsx (or src/Portfolio.jsx and import it in App.jsx).
-// 3) Put your resume at /public/Karanki_Nikhil_Sai.pdf.
-// 4) Ensure tailwind.config.js sets: darkMode: 'class'.
-// 5) npm run dev
-
-// Robust initial theme detection. Respects existing <html class="dark">,
-// then localStorage, then system preference.
+// Robust initial theme detection
 function getInitialTheme() {
   if (typeof window === "undefined") return "light";
   try {
@@ -24,15 +17,15 @@ function getInitialTheme() {
   }
 }
 
-// Mailto builder kept separate so it can be tested easily and reused.
+// Build a mailto: URL from the contact form fields
 function buildMailto({ name, email, message }) {
   const subject = encodeURIComponent(`Portfolio Contact from ${name || ""}`);
   const body = encodeURIComponent(`Name: ${name || ""}\nEmail: ${email || ""}\n\nMessage:\n${message || ""}`);
   return `mailto:nikhilsaikaranki1@gmail.com?subject=${subject}&body=${body}`;
 }
 
-export default function Portfolio() {
-  // THEME STATE --------------------------------------------------------------
+export default function App() {
+  // Theme state (we removed the toggle UI, but keep system/dark-class support)
   const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
@@ -41,10 +34,10 @@ export default function Portfolio() {
       if (theme === "dark") root.classList.add("dark");
       else root.classList.remove("dark");
       localStorage.setItem("theme", theme);
-    } catch {/* ignore */}
+    } catch {}
   }, [theme]);
 
-  // Sync with system preference only if user has not chosen manually
+  // Respect system theme IF user hasn't explicitly chosen
   useEffect(() => {
     let stored = null;
     try { stored = localStorage.getItem("theme"); } catch {}
@@ -60,7 +53,7 @@ export default function Portfolio() {
     };
   }, []);
 
-  // Smooth scroll for in-page anchors. Guards History API in sandbox.
+  // Smooth scroll, sandbox-safe
   useEffect(() => {
     const safeReplaceHash = (hash) => {
       try {
@@ -72,7 +65,7 @@ export default function Portfolio() {
         ) {
           window.history.replaceState(null, "", hash);
         }
-      } catch {/* ignore in sandbox */}
+      } catch {}
     };
 
     const handler = (e) => {
@@ -92,14 +85,12 @@ export default function Portfolio() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
-  // CONTACT FORM STATE --------------------------------------------------------
+  // Contact form
   const [contactForm, setContactForm] = useState({ name: "", email: "", message: "" });
-
   const handleContactChange = (e) => {
     const { name, value } = e.target;
     setContactForm((prev) => ({ ...prev, [name]: value }));
   };
-
   const handleContactSubmit = (e) => {
     e.preventDefault();
     const mailto = buildMailto(contactForm);
@@ -107,7 +98,6 @@ export default function Portfolio() {
     setContactForm({ name: "", email: "", message: "" });
   };
 
-  // RENDER --------------------------------------------------------------------
   return (
     <div className="min-h-screen bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300">
       {/* Top Nav */}
@@ -221,7 +211,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Experience */}
+      {/* Work Experience */}
       <section id="experience" className="border-t border-zinc-200 dark:border-zinc-800">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-16 md:py-20">
           <h2 className="text-2xl font-semibold tracking-tight dark:text-white">Work Experience</h2>
