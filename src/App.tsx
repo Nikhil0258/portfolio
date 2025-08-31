@@ -63,8 +63,7 @@ export default function App() {
 
     const handler = (e: MouseEvent) => {
       const target = e.target as HTMLElement | null;
-      // @ts-ignore
-      const a = target && target.closest && (target.closest(\"a[href^='#']\") as HTMLAnchorElement | null);
+      const a = target && target.closest && (target.closest("a[href^='#']") as HTMLAnchorElement | null);
       if (!a) return;
       const id = a.getAttribute("href");
       if (!id || id === "#") return;
@@ -161,10 +160,10 @@ export default function App() {
           <div className="mt-6 grid md:grid-cols-12 gap-6">
             <div className="md:col-span-7 space-y-4 text-xl text-zinc-700 dark:text-zinc-300 leading-relaxed">
               <p>
-                I focus on validating large-scale data pipelines, analyzing rejections, and building automation that reduces manual work. I enjoy collaborating with QA and client teams, and I’m passionate about AI, process optimization, and data quality improvement.
+                I focus on validating large-scale data pipelines, analyzing rejections, and building automation that reduces manual work. I enjoy collaborating with QA and client teams, and I'm passionate about AI, process optimization, and data quality improvement.
               </p>
               <p>
-                Currently a Data & ETL Testing Analyst at Accenture (McDonald’s account) since Sep 2022; promoted in Feb 2024.
+                Currently a Data & ETL Testing Analyst at Accenture (McDonald's account) since Sep 2022; promoted in Feb 2024.
               </p>
             </div>
             <div className="md:col-span-5">
@@ -174,7 +173,7 @@ export default function App() {
                   <li>Promoted to Data & ETL Testing Analyst (Feb 2024).</li>
                   <li>~70% reduction in manual reporting via Python automation.</li>
                   <li>Hands-on with AWS (S3, Redshift, Athena) and Airflow/Talend.</li>
-                  <li>Client recognition: “Star of the Sprint” (2×).</li>
+                  <li>Client recognition: "Star of the Sprint" (2×).</li>
                 </ul>
               </div>
             </div>
@@ -184,9 +183,9 @@ export default function App() {
             <div data-eca-card className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
               <div className="text-base font-semibold text-zinc-900 dark:text-white">Education</div>
               <ul className="mt-3 space-y-2 text-base text-zinc-700 dark:text-zinc-300">
-                <li>B.Tech in Computer Science (2018–2022) — CGPA 8.09</li>
-                <li>10th Grade (2014–2015) — CGPA 9.7/10</li>
-                <li>12th Grade (2015–2017) — 94.6%</li>
+                <li>B.Tech in Computer Science (2018—2022) — CGPA 8.09</li>
+                <li>10th Grade (2014—2015) — CGPA 9.7/10</li>
+                <li>12th Grade (2015—2017) — 94.6%</li>
               </ul>
             </div>
             <div data-eca-card className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
@@ -199,7 +198,7 @@ export default function App() {
             <div data-eca-card className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
               <div className="text-base font-semibold text-zinc-900 dark:text-white">Achievements</div>
               <ul className="mt-3 space-y-2 text-base text-zinc-700 dark:text-zinc-300">
-                <li>“Star of the Sprint” (2x) and client appreciation for proactive insights & communication.</li>
+                <li>"Star of the Sprint" (2x) and client appreciation for proactive insights & communication.</li>
                 <li>~70% automation improvement in reporting; reduced daily tasks from 1.5 hrs to 20 mins.</li>
               </ul>
             </div>
@@ -242,17 +241,17 @@ export default function App() {
             <article className="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                 <div>
-                  <h3 className="text-2xl font-semibold">Accenture — McDonald’s</h3>
+                  <h3 className="text-2xl font-semibold">Accenture — McDonald's</h3>
                   <p className="text-lg text-zinc-600 dark:text-zinc-400">Data & ETL Testing Analyst</p>
                 </div>
-                <div className="text-lg text-zinc-600 dark:text-zinc-400">Sep 2022 – Present (Promoted Feb 2024)</div>
+                <div className="text-lg text-zinc-600 dark:text-zinc-400">Sep 2022 — Present (Promoted Feb 2024)</div>
               </div>
               <ul className="mt-4 list-disc pl-5 space-y-2 text-lg text-zinc-700 dark:text-zinc-300">
                 <li>Streamlined daily data validation using SQL and Redshift, investigating 500+ records weekly.</li>
                 <li>Automated status & defect reporting (Python), cutting manual effort by ~70%.</li>
                 <li>Wrote/optimized queries across S3, Athena; scheduled jobs via Airflow/Talend.</li>
                 <li>Partnered with QA & client teams to improve data quality and reduce rejections.</li>
-                <li>Recognized as “Star of the Sprint” (2x); frequent client appreciation.</li>
+                <li>Recognized as "Star of the Sprint" (2x); frequent client appreciation.</li>
               </ul>
             </article>
           </div>
@@ -320,8 +319,8 @@ export default function App() {
                 <ul className="mt-4 space-y-3 text-base text-zinc-700 dark:text-zinc-300">
                   <li className="flex items-center gap-3"><Mail className="h-4 w-4" /><a className="hover:text-zinc-900" href="mailto:nikhilsaikaranki1@gmail.com">nikhilsaikaranki1@gmail.com</a></li>
                   <li className="flex items-center gap-3"><Phone className="h-4 w-4" /> +91 93817 82476</li>
-                  <li className="flex items-center gap-3"><Linkedin className="h-4 w-4" /><a className="hover:text-zinc-900" href="#">LinkedIn</a></li>
-                  <li className="flex items-center gap-3"><Github className="h-4 w-4" /><a className="hover:text-zinc-900" href="#">GitHub</a></li>
+                  <li className="flex items-center gap-3"><Linkedin className="h-4 w-4" /><a className="hover:text-zinc-900" href="https://linkedin.com/in/nikhil-sai-karanki">LinkedIn</a></li>
+                  <li className="flex items-center gap-3"><Github className="h-4 w-4" /><a className="hover:text-zinc-900" href="https://github.com/Nikhil0258">GitHub</a></li>
                 </ul>
               </div>
 
